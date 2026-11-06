@@ -144,7 +144,7 @@ Usuarios de demostración que crea `python manage.py migrate` (**cambia estas cl
 | `ana@novacomercial.mx`     | `Nexo2026Demo`    | Administrador (con acceso también como usuario) |
 | `superadmin@magnussig.com` | `Magnus2026Super` | Superadministrador                              |
 
-Desde **Registrarse** cualquiera puede crear una cuenta de **Cliente** o **Asesor de ventas**. Los roles **Supervisor**, **Administrador** y **Superadministrador** piden un código de autorización que valida el servidor (`AUTH_CODES`, definido en la configuración del backend: `settings.py` en Django y `app/config.php` en PHP).
+No existe registro libre: **solo el Superadministrador crea los usuarios y le asigna el rol a cada uno** desde la sección Usuarios, dentro de la página. Nadie puede elegir su propio rol.
 
 | Acción                                          | Cliente               | Asesor                       | Supervisor | Administrador     | Superadmin |
 |-------------------------------------------------|-----------------------|------------------------------|------------|-------------------|------------|
@@ -154,16 +154,14 @@ Desde **Registrarse** cualquiera puede crear una cuenta de **Cliente** o **Aseso
 | Ver ventas                                      | Las suyas             | Las suyas + pedidos en línea | Todas      | Todas             | Todas      |
 | Entregar o anular pedidos                       | Solo cancelar el suyo | Sí                           | Sí         | Sí                | No         |
 | Agregar y eliminar productos, crear categorías  |                       |                              | Sí         | Sí                | No         |
-| Crear usuarios                                  |                       |                              |            | Sí                | No         |
-| Cambiar rol, dar acceso dual, eliminar usuarios |                       |                              |            | Sí                | Sí         |
+| Crear usuarios y asignarles el rol              |                       |                              |            |                   | Sí         |
+| Cambiar rol, dar acceso dual, eliminar usuarios |                       |                              |            |                   | Sí         |
 
 Reglas de seguridad (las aplica el servidor, no solo la pantalla):
 
-- **Nadie puede quitarle el rol al Superadministrador**, ni siquiera un administrador.
-- Un administrador puede dar rol a otra persona, pero esa persona **no puede quitarle el rol** a quien se lo dio (columna `granted_by`).
+- **Nadie puede quitarle el rol al Superadministrador.**
 - Nadie puede modificarse o eliminarse a sí mismo.
-- Solo el Administrador puede tener acceso **también como usuario** (columna `dual`).
-- Al crear un usuario **no se pide el nombre de la empresa**.
+- Solo el Superadministrador puede crear usuarios, cambiar roles y dar el acceso **también como usuario** (columna `dual`) al Administrador.
 - La descripción de un producto o servicio es obligatoria: sin ella el servidor no lo guarda.
 - La moneda es COP y el IVA es 19 %.
 
