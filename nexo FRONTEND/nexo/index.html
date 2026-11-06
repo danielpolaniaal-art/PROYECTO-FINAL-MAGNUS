@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magnus SIG S.A.S</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ INICIO DE SESIÓN ============ -->
+  <section id="view-login" class="auth view" hidden>
+    <aside class="auth-brand">
+      <div class="brand-row light"><img class="brand-logo" src="img/logo.png" alt="Logo Magnus SIG" width="56" height="56"><span class="brand-name">Magnus SIG S.A.S</span></div>
+      <h2>Seguridad y salud en el trabajo, en orden.</h2>
+      <p class="brand-text">Gestiona los servicios de SST, la venta de insumos de emergencia y el historial de cada empresa cliente desde un solo lugar.</p>
+      <div class="photo-card"><img src="img/bodega.jpg" alt="Bodega con inventario ordenado"></div>
+      <p class="brand-services">Diagnóstico, diseño e implementación del SG-SST · Capacitaciones · Auditorías ISO 9001, 14001 y 45001 · PESV · Insumos de emergencia</p>
+      <p class="brand-foot">© 2026 Magnus SIG S.A.S</p>
+    </aside>
+
+    <main class="auth-main">
+      <div class="auth-top">¿No tienes cuenta? <a href="#" data-auth="register">Regístrate →</a></div>
+      <div class="auth-box">
+        <h1>Iniciar sesión</h1>
+        <p class="sub">Ingresa con tu correo y tu contraseña.</p>
+
+        <form id="login-form" novalidate>
+          <label for="login-email">Correo electrónico</label>
+          <div class="input-icon"><input type="email" id="login-email" placeholder="usuario@correo.com" autocomplete="username"><i data-icon="mail"></i></div>
+
+          <label for="login-pass">Contraseña</label>
+          <div class="input-icon"><input type="password" id="login-pass" autocomplete="current-password"><button type="button" class="eye" data-eye="login-pass" aria-label="Mostrar u ocultar contraseña"><i data-icon="eyeOff"></i></button></div>
+
+          <div class="row-between">
+            <label class="check"><input type="checkbox" id="login-remember" checked><span class="box"></span> Recordarme</label>
+            <a href="#" id="forgot-link" class="link-strong">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <p class="form-error" id="login-error" hidden></p>
+          <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        </form>
+      </div>
+    </main>
+  </section>
+
+  <!-- ============ REGISTRO ============ -->
+  <section id="view-register" class="auth view" hidden>
+    <aside class="auth-brand">
+      <div class="brand-row light"><img class="brand-logo" src="img/logo.png" alt="Logo Magnus SIG" width="56" height="56"><span class="brand-name">Magnus SIG S.A.S</span></div>
+      <h2>Seguridad y salud en el trabajo, en orden.</h2>
+      <p class="brand-text">Gestiona los servicios de SST, la venta de insumos de emergencia y el historial de cada empresa cliente desde un solo lugar.</p>
+      <div class="photo-card"><img src="img/bodega.jpg" alt="Bodega con inventario ordenado"></div>
+      <p class="brand-services">Diagnóstico, diseño e implementación del SG-SST · Capacitaciones · Auditorías ISO 9001, 14001 y 45001 · PESV · Insumos de emergencia</p>
+      <p class="brand-foot">© 2026 Magnus SIG S.A.S</p>
+    </aside>
+
+    <main class="auth-main">
+      <div class="auth-top">¿Ya tienes cuenta? <a href="#" data-auth="login">Inicia sesión →</a></div>
+      <div class="auth-box wide">
+        <h1>Crear cuenta</h1>
+        <p class="sub">Regístrate para comprar en la tienda de Magnus SIG S.A.S.</p>
+
+        <form id="register-form" novalidate>
+          <p class="reg-note">Esta cuenta es de <b>Cliente</b>: podrás ver la tienda, comprar y seguir tus pedidos. Las cuentas del equipo de Magnus las crea el superadministrador.</p>
+
+          <label for="reg-name">Nombre completo *</label>
+          <div class="input-icon"><input type="text" id="reg-name" placeholder="Nombre y apellido" autocomplete="name"></div>
+
+          <label for="reg-email">Correo electrónico *</label>
+          <div class="input-icon"><input type="email" id="reg-email" placeholder="usuario@correo.com" autocomplete="email"><i data-icon="mail"></i></div>
+
+          <div class="grid-2">
+            <div>
+              <label for="reg-pass">Contraseña *</label>
+              <div class="input-icon"><input type="password" id="reg-pass" autocomplete="new-password"><button type="button" class="eye" data-eye="reg-pass" aria-label="Mostrar u ocultar contraseña"><i data-icon="eyeOff"></i></button></div>
+            </div>
+            <div>
+              <label for="reg-pass2">Confirmar contraseña *</label>
+              <div class="input-icon"><input type="password" id="reg-pass2" autocomplete="new-password"><button type="button" class="eye" data-eye="reg-pass2" aria-label="Mostrar u ocultar contraseña"><i data-icon="eyeOff"></i></button></div>
+            </div>
+          </div>
+
+          <div id="reg-client-fields">
+            <div class="grid-2">
+              <div><label for="reg-doc">Cédula o NIT *</label><input type="text" id="reg-doc" placeholder="Ej: 1075234118 o 900123456-8"></div>
+              <div><label for="reg-phone">Teléfono *</label><input type="text" id="reg-phone" placeholder="Ej: 310 456 7821"></div>
+            </div>
+          </div>
+
+          <p class="strength" id="reg-strength"><i data-icon="checkCircle"></i> <span>Mínimo 8 caracteres, una letra y un número</span></p>
+
+          <p class="form-error" id="register-error" hidden></p>
+          <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+        </form>
+      </div>
+    </main>
+  </section>
+
+  <!-- ============ APLICACIÓN ============ -->
+  <div id="app" class="app view" hidden>
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-row"><span class="logo-tile" data-icon="logo"></span><span class="brand-name">Magnus SIG S.A.S</span></div>
+
+      <div class="mode-switch" id="mode-switch" hidden>
+        <p class="nav-title">ENTRAR COMO</p>
+        <div class="seg">
+          <button type="button" data-mode="admin">Administrador</button>
+          <button type="button" data-mode="user">Usuario</button>
+        </div>
+      </div>
+
+      <p class="nav-title">MENÚ</p>
+      <nav class="nav">
+        <button data-page="shop" class="nav-item"><i data-icon="bag"></i> Tienda</button>
+        <button data-page="dashboard" class="nav-item"><i data-icon="grid"></i> Inicio</button>
+        <button data-page="inventory" class="nav-item"><i data-icon="box"></i> Productos y servicios</button>
+        <button data-page="sales" class="nav-item"><i data-icon="cart"></i> Registrar venta</button>
+        <button data-page="history" class="nav-item"><i data-icon="receipt"></i> Historial de ventas</button>
+        <button data-page="add" class="nav-item"><i data-icon="boxPlus"></i> Agregar al catálogo</button>
+        <button data-page="admin" class="nav-item"><i data-icon="users"></i> Usuarios</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="user-row">
+          <span class="avatar" id="side-avatar"></span>
+          <div><strong id="side-name"></strong><small id="side-role"></small></div>
+        </div>
+        <button class="logout-btn" id="open-logout"><i data-icon="logOut"></i> Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <button class="menu-btn" id="menu-btn" aria-label="Menú"><i data-icon="grid"></i></button>
+        <div class="crumbs">Magnus SIG S.A.S <span>/</span> <strong id="crumb">Inicio</strong></div>
+        <div class="top-right"><button type="button" class="cart-btn" id="cart-btn" hidden aria-label="Abrir carrito"><i data-icon="cart"></i><span class="lbl">Mi carrito</span><span class="cart-count" id="cart-count" hidden>0</span></button><span id="readonly-badge" class="pill gray readonly-badge" hidden><i data-icon="eye"></i> Modo vigilancia · solo lectura</span><span id="top-date" class="top-date"></span></div>
+      </header>
+
+      <main class="content">
+
+        <!-- INICIO -->
+        <section id="page-dashboard" class="page">
+          <div class="page-head">
+            <div><h1 id="dash-title"></h1><p class="sub" id="dash-sub"></p></div>
+            <button class="btn btn-primary" data-page="sales"><i data-icon="plus"></i> Nueva venta</button>
+          </div>
+
+          <div class="cards-4">
+            <div class="card kpi"><div class="kpi-top"><span id="k-sales-label">Ventas de hoy</span><i data-icon="wallet"></i></div><strong id="k-sales">$ 0</strong><small class="teal" id="k-sales-sub"></small></div>
+            <div class="card kpi"><div class="kpi-top"><span>Productos y servicios</span><i data-icon="box"></i></div><strong id="k-active">0</strong><small class="teal" id="k-active-sub"></small></div>
+            <div class="card kpi"><div class="kpi-top"><span>Unidades disponibles</span><i data-icon="logo"></i></div><strong id="k-units">0</strong><small class="teal" id="k-units-sub"></small></div>
+            <div class="card kpi"><div class="kpi-top"><span>Productos por reponer</span><i data-icon="alert"></i></div><strong id="k-alerts">0</strong><small class="amber" id="k-alerts-sub"></small></div>
+          </div>
+
+          <div class="dash-grid">
+            <div class="card">
+              <h3>Ventas de los últimos 7 días</h3>
+              <p class="muted">Total vendido por día, en pesos colombianos</p>
+              <div class="week-total"><strong id="week-total">$ 0</strong></div>
+              <div class="chart">
+                <div class="y-axis" id="y-axis"></div>
+                <div class="bars" id="bars"></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Productos por reponer</h3>
+              <p class="muted">Para que no te quedes sin existencias</p>
+              <ul class="attention" id="attention"></ul>
+              <a href="#" class="link-strong" data-page="inventory">Ver inventario →</a>
+            </div>
+
+            <div class="card">
+              <h3>Últimas ventas</h3>
+              <div class="table-wrap">
+                <table class="table simple">
+                  <thead><tr><th>Venta</th><th>Cliente</th><th>Asesor</th><th>Total</th></tr></thead>
+                  <tbody id="recent-sales"></tbody>
+                </table>
+              </div>
+              <a href="#" class="link-strong block-link" data-page="history">Ver historial completo →</a>
+            </div>
+
+            <div class="card">
+              <h3>Accesos rápidos</h3>
+              <p class="muted">Continúa con tu trabajo</p>
+              <button class="btn btn-primary btn-block" data-page="sales"><i data-icon="cart"></i> Registrar una venta</button>
+              <button class="btn btn-outline btn-block" data-page="add"><i data-icon="boxPlus"></i> Agregar un producto</button>
+              <button class="btn btn-outline btn-block" data-page="history"><i data-icon="receipt"></i> Ver historial de ventas</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- TIENDA (solo clientes) -->
+        <section id="page-shop" class="page" hidden>
+          <div class="shop-hero">
+            <div>
+              <h1 id="shop-hello">Tienda</h1>
+              <p class="sub">Insumos de emergencia y servicios de SST. Haz clic en un producto para ver su descripción completa.</p>
+            </div>
+            <ol class="how-to">
+              <li><span>1</span> Elige lo que necesitas</li>
+              <li><span>2</span> Revisa tu carrito</li>
+              <li><span>3</span> Confirma en 4 pasos</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <div class="toolbar">
+              <div class="search"><i data-icon="search"></i><input type="text" id="shop-search" placeholder="Buscar por nombre, categoría o código..."></div>
+              <select id="shop-cat"><option value="">Todas las categorías</option></select>
+            </div>
+            <div class="chips shop-kinds" id="shop-kinds">
+              <button type="button" data-kind="all" class="active">Todo</button>
+              <button type="button" data-kind="product">Productos</button>
+              <button type="button" data-kind="service">Servicios</button>
+            </div>
+            <p class="muted small" id="shop-count"></p>
+            <div class="shop-grid" id="shop-grid"></div>
+          </div>
+        </section>
+
+        <!-- FINALIZAR COMPRA (solo clientes) -->
+        <section id="page-checkout" class="page" hidden>
+          <div class="page-head">
+            <div><h1>Finalizar compra</h1><p class="sub">Sigue estos pasos para completar tu pedido. Puedes volver atrás cuando quieras.</p></div>
+          </div>
+
+          <ol class="stepper" id="co-stepper">
+            <li data-s="1"><span class="n">1</span><b>Carrito</b></li>
+            <li data-s="2"><span class="n">2</span><b>Tus datos</b></li>
+            <li data-s="3"><span class="n">3</span><b>Entrega y pago</b></li>
+            <li data-s="4"><span class="n">4</span><b>Confirmar</b></li>
+          </ol>
+
+          <div class="checkout-grid" id="checkout-grid">
+            <div class="card co-card">
+              <section class="co-step" data-step="1">
+                <h3>1. Revisa tu carrito</h3>
+                <p class="muted">Ajusta las cantidades o quita lo que no necesites.</p>
+                <div id="co-cart"></div>
+              </section>
+
+              <section class="co-step" data-step="2" hidden>
+                <h3>2. Tus datos</h3>
+                <p class="muted">Los usamos para identificar tu pedido y contactarte. Deben ser reales: los validamos.</p>
+                <label for="co-name">Nombre o razón social *</label>
+                <input type="text" id="co-name" autocomplete="name" placeholder="Nombre y apellido, o nombre de la empresa">
+                <label for="co-email">Correo electrónico</label>
+                <input type="text" id="co-email" readonly>
+                <div class="grid-2">
+                  <div>
+                    <label for="co-doc">Cédula o NIT *</label>
+                    <input type="text" id="co-doc" inputmode="numeric" autocomplete="off" placeholder="Ej: 1075234118 o 900123456-8">
+                    <small class="muted">Cédula: 6 a 10 dígitos. NIT: con guion y dígito de verificación.</small>
+                  </div>
+                  <div>
+                    <label for="co-phone">Teléfono *</label>
+                    <input type="text" id="co-phone" inputmode="tel" autocomplete="tel" placeholder="Ej: 310 456 7821">
+                    <small class="muted">Celular (empieza por 3) o fijo con indicativo (ej. 608…).</small>
+                  </div>
+                </div>
+              </section>
+
+              <section class="co-step" data-step="3" hidden>
+                <h3>3. Entrega y pago</h3>
+                <p class="muted">Dinos cómo quieres recibir tu pedido y cómo vas a pagar.</p>
+
+                <div id="co-method-wrap">
+                  <h4 class="co-sub">¿Cómo lo recibes?</h4>
+                  <div class="opts">
+                    <label class="opt"><input type="radio" name="co-method" value="pickup" checked><span class="opt-box"><b>Recoger en la bodega</b><small>Sin costo. Te avisamos cuando esté listo.</small></span></label>
+                    <label class="opt"><input type="radio" name="co-method" value="ship"><span class="opt-box"><b>Envío a domicilio</b><small>El asesor te confirma el costo del envío.</small></span></label>
+                  </div>
+                </div>
+
+                <div id="co-address-fields" hidden>
+                  <div class="grid-2">
+                    <div><label for="co-city">Ciudad o municipio *</label><input type="text" id="co-city" autocomplete="address-level2" placeholder="Ej: Neiva"></div>
+                    <div><label for="co-address" id="co-addr-label">Dirección de entrega *</label><input type="text" id="co-address" autocomplete="street-address" placeholder="Ej: Cra 7 # 12-34, barrio Centro"></div>
+                  </div>
+                </div>
+
+                <h4 class="co-sub">Forma de pago</h4>
+                <div class="opts">
+                  <label class="opt"><input type="radio" name="co-pay" value="Transferencia bancaria" checked><span class="opt-box"><b>Transferencia bancaria</b><small>Consignas al número que te mostramos.</small></span></label>
+                  <label class="opt"><input type="radio" name="co-pay" value="Nequi / Daviplata"><span class="opt-box"><b>Nequi / Daviplata</b><small>Consignas desde tu celular.</small></span></label>
+                  <label class="opt"><input type="radio" name="co-pay" value="Tarjeta débito / crédito"><span class="opt-box"><b>Tarjeta débito / crédito</b><small>Ingresas los datos de tu tarjeta aquí.</small></span></label>
+                  <label class="opt"><input type="radio" name="co-pay" value="Efectivo"><span class="opt-box"><b>Efectivo</b><small>Al recibir o al recoger tu pedido.</small></span></label>
+                </div>
+
+                <div class="pay-panel" id="pay-number" hidden>
+                  <small id="pay-number-title">Consigna al número</small>
+                  <div class="pay-number-row"><strong id="pay-number-val">302 295 9136</strong><button type="button" class="btn btn-outline" id="pay-copy">Copiar número</button></div>
+                  <p class="muted small">Valor a pagar: <b id="pay-number-total">$ 0</b>. Guarda el comprobante: el asesor te lo pedirá para confirmar tu pedido.</p>
+                </div>
+
+                <div class="pay-panel" id="pay-card" hidden>
+                  <small>Datos de la tarjeta</small>
+                  <label for="cc-number">Número de la tarjeta *</label>
+                  <input type="text" id="cc-number" inputmode="numeric" autocomplete="off" maxlength="23" placeholder="0000 0000 0000 0000">
+                  <label for="cc-name">Nombre del titular *</label>
+                  <input type="text" id="cc-name" autocomplete="off" placeholder="Como aparece en la tarjeta">
+                  <div class="grid-2">
+                    <div><label for="cc-exp">Vence (MM/AA) *</label><input type="text" id="cc-exp" inputmode="numeric" autocomplete="off" maxlength="5" placeholder="MM/AA"></div>
+                    <div><label for="cc-cvv">CVV *</label><input type="password" id="cc-cvv" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="123"></div>
+                  </div>
+                  <p class="muted small">Por seguridad, en el sistema solo se guardan los últimos 4 dígitos de la tarjeta.</p>
+                </div>
+
+                <label for="co-notes">Notas del pedido (opcional)</label>
+                <textarea id="co-notes" rows="2" maxlength="300" placeholder="Ej: tallas, horario de entrega, datos de la persona que recibe..."></textarea>
+              </section>
+
+              <section class="co-step" data-step="4" hidden>
+                <h3>4. Confirma tu pedido</h3>
+                <p class="muted">Revisa que todo esté bien. Si algo no es correcto, usa «Editar».</p>
+                <div id="co-review"></div>
+                <label class="check"><input type="checkbox" id="co-accept"><span class="box"></span> Confirmo que mis datos son correctos y acepto que un asesor de Magnus SIG me contacte para coordinar el pedido.</label>
+              </section>
+
+              <section class="co-step co-done" data-step="5" hidden id="co-done"></section>
+
+              <p class="form-error" id="co-error" hidden></p>
+              <div class="co-actions" id="co-actions">
+                <button type="button" class="btn btn-outline" id="co-back">← Atrás</button>
+                <button type="button" class="btn btn-primary" id="co-next">Continuar</button>
+              </div>
+            </div>
+
+            <aside class="card co-summary" id="co-summary">
+              <h3>Resumen de tu pedido</h3>
+              <div id="co-sum-items" class="co-sum-items"></div>
+              <div class="sum-rows">
+                <div><span>Subtotal</span><b id="co-sub">$ 0</b></div>
+                <div><span>IVA (19%)</span><b id="co-iva">$ 0</b></div>
+              </div>
+              <div class="total-row"><span>Total</span><strong id="co-total">$ 0</strong></div>
+              <p class="muted small">Precios en pesos colombianos (COP). Los servicios no descuentan existencias.</p>
+            </aside>
+          </div>
+        </section>
+
+        <!-- INVENTARIO -->
+        <section id="page-inventory" class="page" hidden>
+          <div class="page-head">
+            <div><h1>Productos y servicios</h1><p class="sub">Insumos de emergencia con sus existencias y servicios de SST. Haz clic en uno para ver todos sus detalles.</p></div>
+            <button class="btn btn-primary" data-page="add"><i data-icon="plus"></i> Agregar al catálogo</button>
+          </div>
+
+          <div class="cards-4">
+            <div class="card kpi"><div class="kpi-top"><span>Productos con existencias</span><i data-icon="box"></i></div><strong id="i-total">0</strong><small class="teal" id="i-total-sub"></small></div>
+            <div class="card kpi"><div class="kpi-top"><span>Unidades disponibles</span><i data-icon="logo"></i></div><strong id="i-units">0</strong><small class="teal" id="i-value"></small></div>
+            <div class="card kpi"><div class="kpi-top"><span>Pocas unidades</span><i data-icon="alert"></i></div><strong id="i-low">0</strong><small class="amber">Conviene reponer</small></div>
+            <div class="card kpi"><div class="kpi-top"><span>Agotados</span><i data-icon="box"></i></div><strong id="i-out">0</strong><small class="amber" id="i-out-sub"></small></div>
+          </div>
+
+          <div class="card">
+            <div class="tabs" id="inv-tabs">
+              <button class="tab active" data-tab="all">Todos <span class="count" id="c-all">0</span></button>
+              <button class="tab" data-tab="product">Productos <span class="count" id="c-product">0</span></button>
+              <button class="tab" data-tab="service">Servicios <span class="count" id="c-service">0</span></button>
+              <button class="tab" data-tab="low">Pocas unidades <span class="count" id="c-low">0</span></button>
+              <button class="tab" data-tab="out">Agotados <span class="count" id="c-out">0</span></button>
+            </div>
+            <div class="toolbar">
+              <div class="search"><i data-icon="search"></i><input type="text" id="inv-search" placeholder="Buscar por nombre o código..."></div>
+              <select id="inv-cat"><option value="">Todas las categorías</option></select>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>Producto</th><th>Categoría</th><th>Disponible</th><th>Precio</th><th>Estado</th><th></th></tr></thead>
+                <tbody id="inv-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- USUARIOS -->
+        <section id="page-admin" class="page" hidden>
+          <div class="page-head">
+            <div><h1>Usuarios</h1><p class="sub">Crea usuarios en la ventana «Crear usuario» y define qué puede hacer cada uno.</p></div>
+            <button class="btn btn-primary" id="open-create-user"><i data-icon="userPlus"></i> Crear usuario</button>
+          </div>
+
+          <div class="card">
+            <h3>Equipo de Magnus SIG S.A.S</h3>
+            <p class="muted" id="team-sub"></p>
+            <div class="toolbar">
+              <div class="search"><i data-icon="search"></i><input type="text" id="team-search" placeholder="Buscar por nombre o correo..."></div>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>Usuario</th><th>Rol</th><th>Entra también como usuario</th><th>Último ingreso</th><th></th></tr></thead>
+                <tbody id="team-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="section-title"><h3>Roles</h3></div>
+          <div class="cards-4 roles">
+            <div class="card role"><h4><i data-icon="shield"></i> Superadministrador</h4><p>Vigila la página y crea los usuarios. Nadie puede quitarle ni cambiarle el rol.</p><hr><small>Ve el inicio, el inventario y el historial · crea, modifica y elimina usuarios</small></div>
+            <div class="card role"><h4><i data-icon="users"></i> Administrador</h4><p>Dirige la empresa: usuarios, catálogo e historial.</p><hr><small>Da roles a otros, pero no puede cambiar el rol de quien lo creó o de un superadministrador</small></div>
+            <div class="card role"><h4><i data-icon="clipboard"></i> Supervisor</h4><p>Controla la operación diaria.</p><hr><small>Catálogo e inventario · ventas · atender pedidos · historial completo</small></div>
+            <div class="card role"><h4><i data-icon="cart"></i> Cliente</h4><p>Compra desde la tienda.</p><hr><small>Ver productos · carrito de compras · confirmar compra · seguir el estado de sus pedidos</small></div>
+            <div class="card role"><h4><i data-icon="bag"></i> Asesor de ventas</h4><p>Atiende clientes y pedidos en línea.</p><hr><small>Registrar ventas · consultar inventario · entregar o anular pedidos · ver sus ventas</small></div>
+          </div>
+        </section>
+
+        <!-- REGISTRAR VENTA -->
+        <section id="page-sales" class="page" hidden>
+          <div class="page-head">
+            <div><h1 id="sales-title">Registrar venta</h1><p class="sub" id="sales-sub">Elige el cliente, agrega los productos y confirma la venta.</p></div>
+          </div>
+
+          <div class="sales-grid">
+            <div class="sales-left">
+              <div class="card" id="sale-data-card">
+                <h3>Datos de la venta</h3>
+                <div class="grid-2">
+                  <div>
+                    <label for="s-client">Cliente</label>
+                    <div class="select-row">
+                      <select id="s-client"></select>
+                      <button type="button" class="btn btn-outline btn-sm" id="open-new-client" title="Agregar cliente nuevo"><i data-icon="userPlus"></i> Nuevo</button>
+                    </div>
+                    <small class="muted" id="s-client-info"></small>
+                  </div>
+                  <div><label for="s-advisor">Asesor de ventas</label><input type="text" id="s-advisor" readonly><small class="muted" id="s-date-info"></small></div>
+                </div>
+              </div>
+
+              <div class="card">
+                <h3>Productos y servicios</h3>
+                <p class="muted">Precios en pesos colombianos (COP), sin IVA. Los servicios no descuentan existencias.</p>
+                <div class="search"><i data-icon="search"></i><input type="text" id="s-search" placeholder="Buscar producto o servicio..."></div>
+                <div class="product-grid" id="product-grid"></div>
+              </div>
+
+              <div class="card">
+                <h3>Detalle de la venta</h3>
+                <p class="muted" id="cart-sub"></p>
+                <div id="cart-list"></div>
+              </div>
+            </div>
+
+            <aside class="sales-right">
+              <div class="card">
+                <h3>Resumen</h3>
+                <div class="folio-row"><span id="s-folio"></span></div>
+                <div class="sum-rows">
+                  <div><span>Subtotal</span><b id="s-sub">$ 0</b></div>
+                  <div><span>IVA (19%)</span><b id="s-iva">$ 0</b></div>
+                </div>
+                <div class="total-row"><span>Total</span><strong id="s-total">$ 0</strong></div>
+                <label for="s-pay">Forma de pago *</label>
+                <select id="s-pay"><option>Efectivo</option><option>Tarjeta débito / crédito</option><option>Transferencia bancaria</option><option>Nequi / Daviplata</option></select>
+                <p class="form-error" id="sale-error" hidden></p>
+                <button class="btn btn-primary btn-block" id="confirm-sale"><i data-icon="check"></i> Registrar venta</button>
+                <button class="btn btn-outline btn-block" id="cancel-sale">Cancelar</button>
+              </div>
+              <div class="note-box"><i data-icon="refresh"></i> Al registrar la venta, las existencias se descuentan automáticamente.</div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- HISTORIAL DE VENTAS -->
+        <section id="page-history" class="page" hidden>
+          <div class="page-head">
+            <div><h1>Historial de ventas</h1><p class="sub" id="hist-sub"></p></div>
+          </div>
+
+          <div class="cards-4">
+            <div class="card kpi"><div class="kpi-top"><span>Ventas registradas</span><i data-icon="receipt"></i></div><strong id="h-count">0</strong></div>
+            <div class="card kpi"><div class="kpi-top"><span>Total vendido</span><i data-icon="wallet"></i></div><strong id="h-total">$ 0</strong></div>
+            <div class="card kpi"><div class="kpi-top"><span>Venta promedio</span><i data-icon="cart"></i></div><strong id="h-avg">$ 0</strong></div>
+            <div class="card kpi"><div class="kpi-top"><span>Unidades vendidas</span><i data-icon="box"></i></div><strong id="h-units">0</strong></div>
+          </div>
+
+          <div class="card">
+            <div class="tabs" id="hist-tabs">
+              <button class="tab active" data-tab="all">Todas las ventas</button>
+              <button class="tab" data-tab="client">Por cliente</button>
+              <button class="tab" data-tab="advisor" id="tab-advisor">Por asesor</button>
+            </div>
+            <div class="toolbar">
+              <div class="search"><i data-icon="search"></i><input type="text" id="hist-search" placeholder="Buscar por cliente, asesor o número de venta..."></div>
+            </div>
+            <div class="table-wrap"><table class="table" id="hist-table"></table></div>
+          </div>
+        </section>
+
+        <!-- AGREGAR PRODUCTO -->
+        <section id="page-add" class="page" hidden>
+          <div class="page-head">
+            <div><h1>Agregar al catálogo</h1><p class="sub">Registra un producto de emergencia o un servicio de SST.</p></div>
+            <small class="muted">* Campos obligatorios</small>
+          </div>
+
+          <form id="add-form" class="add-grid" novalidate>
+            <div class="add-left">
+              <div class="card">
+                <h3>Información general</h3>
+                <label for="p-kind">Tipo *</label>
+                <select id="p-kind"><option>Producto</option><option>Servicio</option></select>
+                <label for="p-name">Nombre *</label>
+                <input type="text" id="p-name" placeholder="Nombre del producto o servicio">
+                <div class="grid-2">
+                  <div><label for="p-sku">Código *</label><input type="text" id="p-sku" placeholder="Ej: ELE-013"></div>
+                  <div>
+                    <label for="p-cat">Categoría *</label>
+                    <select id="p-cat"></select>
+                    <button type="button" class="link-btn" id="open-new-cat">+ Crear categoría nueva</button>
+                  </div>
+                </div>
+                <label for="p-desc">Descripción *</label>
+                <textarea id="p-desc" rows="3" placeholder="Describe el producto o servicio: características, alcance, uso..."></textarea>
+                <small class="muted">La descripción es obligatoria para poder guardar el producto.</small>
+              </div>
+
+              <div class="card">
+                <h3 id="price-card-title">Precios y existencias</h3>
+                <p class="muted">Valores en pesos colombianos (COP), sin IVA.</p>
+                <div class="grid-2">
+                  <div><label for="p-cost" id="lbl-cost">Precio de costo *</label><input type="number" id="p-cost" min="0" step="1" placeholder="Ej: 45000"></div>
+                  <div><label for="p-price" id="lbl-price">Precio de venta *</label><input type="number" id="p-price" min="0" step="1" placeholder="Ej: 69900"></div>
+                  </div>
+                <div class="grid-2" id="stock-fields">
+                  <div><label for="p-stock">Unidades iniciales *</label><input type="number" id="p-stock" min="0" step="1" placeholder="Ej: 20"></div>
+                  <div><label for="p-min">Avisar cuando queden *</label><input type="number" id="p-min" min="0" step="1" placeholder="Ej: 5"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="add-right">
+              <div class="card">
+                <h3>Imagen del producto</h3>
+                <div class="img-box" id="img-box"></div>
+                <div class="file-row" id="file-row">
+                  <div><strong id="file-name"></strong><small id="file-meta"></small></div>
+                  <button type="button" class="icon-btn" id="img-remove" aria-label="Quitar imagen"><i data-icon="trash"></i></button>
+                </div>
+                <input type="file" id="img-input" accept="image/png,image/jpeg" hidden>
+                <button type="button" class="btn btn-outline btn-block" id="img-change"><i data-icon="upload"></i> Subir imagen</button>
+                <small class="muted">JPG o PNG · Máximo 5 MB</small>
+              </div>
+
+              <div class="card">
+                <h3>Estado</h3>
+                <label for="p-state">Estado *</label>
+                <select id="p-state"><option>Activo</option><option>Inactivo</option></select>
+                <p class="muted small">Lo activo aparece en el registro de ventas.</p>
+              </div>
+
+              <p class="form-error" id="add-error" hidden></p>
+              <button type="submit" class="btn btn-primary btn-block"><i data-icon="check"></i> Guardar producto</button>
+              <button type="button" class="btn btn-outline btn-block" id="add-cancel">Cancelar</button>
+            </div>
+          </form>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ============ MODALES ============ -->
+  <div class="modal-backdrop" id="logout-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-x" data-close aria-label="Cerrar"><i data-icon="x"></i></button>
+      <div class="icon-tile"><i data-icon="logOut"></i></div>
+      <h2>¿Quieres cerrar sesión?</h2>
+      <p class="sub">Para volver a entrar tendrás que iniciar sesión de nuevo.</p>
+      <div class="account-box"><span class="avatar" id="m-avatar"></span><div><strong id="m-name"></strong><small id="m-email"></small></div></div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" data-close>Seguir aquí</button>
+        <button class="btn btn-primary" id="confirm-logout"><i data-icon="logOut"></i> Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="user-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-x" data-close aria-label="Cerrar"><i data-icon="x"></i></button>
+      <div class="icon-tile"><i data-icon="userPlus"></i></div>
+      <h2>Crear usuario</h2>
+      <p class="sub">La persona podrá entrar con el correo y la contraseña que definas aquí.</p>
+      <form id="user-form" novalidate>
+        <label for="u-name">Nombre completo *</label>
+        <input type="text" id="u-name" placeholder="Nombre y apellido">
+        <label for="u-email">Correo electrónico *</label>
+        <input type="email" id="u-email" placeholder="usuario@correo.com">
+        <label for="u-pass">Contraseña *</label>
+        <div class="input-icon"><input type="text" id="u-pass" autocomplete="off" placeholder="Mínimo 8 caracteres, una letra y un número"></div>
+        <label for="u-role">Rol *</label>
+        <select id="u-role"></select>
+        <div id="u-client-fields" hidden>
+          <div class="grid-2">
+            <div><label for="u-doc">Cédula o NIT *</label><input type="text" id="u-doc" placeholder="Ej: 1075234118"></div>
+            <div><label for="u-phone">Teléfono *</label><input type="text" id="u-phone" placeholder="Ej: 310 456 7821"></div>
+          </div>
+        </div>
+        <label class="check" id="u-dual-row" hidden><input type="checkbox" id="u-dual"><span class="box"></span> Puede entrar también como usuario (para registrar ventas)</label>
+        <p class="form-error" id="user-error" hidden></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+          <button type="submit" class="btn btn-primary">Crear usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="cat-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-x" data-close aria-label="Cerrar"><i data-icon="x"></i></button>
+      <h2>Categoría nueva</h2>
+      <p class="sub">Escribe el nombre de la categoría que quieres agregar.</p>
+      <form id="cat-form" novalidate>
+        <label for="c-name">Nombre *</label>
+        <input type="text" id="c-name" placeholder="Ej: Gaming">
+        <p class="form-error" id="cat-error" hidden></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="client-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-x" data-close aria-label="Cerrar"><i data-icon="x"></i></button>
+      <h2>Cliente nuevo</h2>
+      <p class="sub">Guarda los datos del cliente para usarlos en sus próximas compras.</p>
+      <form id="client-form" novalidate>
+        <label for="cl-name">Nombre o razón social *</label>
+        <input type="text" id="cl-name" placeholder="Nombre del cliente">
+        <div class="grid-2">
+          <div><label for="cl-doc">Cédula o NIT *</label><input type="text" id="cl-doc" placeholder="Ej: 1075234118"></div>
+          <div><label for="cl-phone">Teléfono *</label><input type="text" id="cl-phone" placeholder="Ej: 310 456 7821"></div>
+        </div>
+        <p class="form-error" id="client-error" hidden></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar cliente</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="detail-modal" hidden>
+    <div class="modal wide-modal" role="dialog" aria-modal="true">
+      <button class="modal-x" data-close aria-label="Cerrar"><i data-icon="x"></i></button>
+      <div id="detail-body"></div>
+      <div class="modal-actions"><button class="btn btn-outline" data-close>Cerrar</button></div>
+    </div>
+  </div>
+
+  <!-- Carrito lateral (clientes) -->
+  <div class="modal-backdrop drawer-back" id="cart-drawer" hidden>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-label="Tu carrito">
+      <div class="drawer-head">
+        <div><h3>Tu carrito</h3><small class="muted" id="drawer-sub"></small></div>
+        <button type="button" class="icon-btn" data-close aria-label="Cerrar"><i data-icon="x"></i></button>
+      </div>
+      <div class="drawer-list" id="drawer-list"></div>
+      <div class="drawer-foot">
+        <div class="sum-rows">
+          <div><span>Subtotal</span><b id="d-sub">$ 0</b></div>
+          <div><span>IVA (19%)</span><b id="d-iva">$ 0</b></div>
+        </div>
+        <div class="total-row"><span>Total</span><strong id="d-total">$ 0</strong></div>
+        <button type="button" class="btn btn-primary btn-block" id="drawer-checkout"><i data-icon="check"></i> Continuar con la compra</button>
+        <button type="button" class="btn btn-outline btn-block" data-close>Seguir comprando</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
