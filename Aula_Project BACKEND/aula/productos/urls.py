@@ -23,6 +23,6 @@ urlpatterns = [
 
     path("api/users/", views.users_api, name="api_users"),
     path("api/users/create/", views.user_create_api, name="api_user_create"),
-    path("api/users/<int:user_id>/", views.user_update_api, name="api_user_update"),
+    path("api/users/<int:user_id>/", views.user_detail_api, name="api_user_update"),
     path("api/users/<int:user_id>/delete/", views.user_delete_api, name="api_user_delete"),
 ]

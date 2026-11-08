@@ -752,3 +752,10 @@ def user_delete_api(request, user_id):
     except ProtectedError:
         return error_response("No se puede eliminar este usuario porque tiene información asociada.", 409)
     return response({"message": "Usuario eliminado."})
+
+@require_http_methods(["PUT", "PATCH", "DELETE"])
+def user_detail_api(request, user_id):
+    """Una sola ruta /api/users/<id>/: DELETE elimina; PUT/PATCH actualizan."""
+    if request.method == "DELETE":
+        return user_delete_api(request, user_id)
+    return user_update_api(request, user_id)
