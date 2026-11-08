@@ -205,16 +205,11 @@ sudo bash deploy/install_lamp.sh      # instala Apache + MySQL + PHP y publica e
 
 ### Arranque
 
-**Terminal 1 · Django**
-```powershell
-cd "C:\RUTA\Proyecto_Aula_Final_Magnus\Aula_Project BACKEND"
-python -m venv venv                      # solo la primera vez
-.\venv\Scripts\Activate.ps1
-pip install -r requirements.txt          # solo la primera vez
-cd aula
-$env:DB_PASSWORD = "TU_CLAVE_DE_MYSQL"
-$env:NEXO_HTTPS  = "1"
-# $env:NGROK_DOMAIN = "tu-dominio.ngrok-free.dev"     # opcional
+& "C:\Users\PC\Downloads\Proyecto_Magnus_COMPLETO\venv\Scripts\Activate.ps1"
+cd "C:\Users\PC\Downloads\Proyecto_Magnus_COMPLETO\Proyecto_Magnus_COMPLETO\Aula_Project BACKEND\aula"
+$env:DB_PASSWORD = "TU_CLAVE_MYSQL"
+$env:NEXO_HTTPS = "1"
+$env:NGROK_DOMAIN = "wistful-roundish-cornbread.ngrok-free.dev"
 python manage.py runserver 127.0.0.1:8000
 ```
 
