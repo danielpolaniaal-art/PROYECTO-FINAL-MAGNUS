@@ -1,0 +1,15 @@
+# Nexo · Magnus SIG — reglas de Apache (requiere mod_rewrite y AllowOverride All)
+Options -Indexes
+DirectoryIndex index.html index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Todo /api/... lo atiende la API PHP (mismas rutas que tenía Django)
+    RewriteCond %{REQUEST_URI} !^/api/index\.php
+    RewriteRule ^api(/.*)?$ api/index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>

@@ -1,0 +1,10 @@
+<?php
+// Copia este archivo como config.local.php (install_lamp.sh lo hace solo) y ajusta los valores.
+return [
+    'DB_HOST'     => '127.0.0.1',
+    'DB_NAME'     => 'nexo_db',
+    'DB_USER'     => 'nexo_user',
+    'DB_PASSWORD' => 'PON_AQUI_LA_CLAVE_DE_MYSQL',
+    'APP_SECRET'  => 'PON_AQUI_UNA_CLAVE_LARGA_ALEATORIA',
+    // 'AUTH_CODES' => ['Supervisor' => 'SUP-2026', 'Administrador' => 'ADM-2026', 'Superadministrador' => 'SUPER-2026'],
+];
